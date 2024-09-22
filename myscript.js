@@ -1,4 +1,3 @@
-
 // set the dimensions and margins of the graph
 const margin = {top: 80, right: 25, bottom: 25, left: 100},
   width = 1825 - margin.left - margin.right,
@@ -83,10 +82,11 @@ d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
   }
   
   // on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-  
   const mousemove = function(event,d) {
+    let basetemp = 8.66;
+    basetemp += d.variance;
     tooltip
-      .html("Year: " + d.year + "<br>Month: "+ d.month + "<br>Variance: " + d.variance )
+      .html("Year: " + d.year + "<br>Temperature: "+ basetemp.toFixed(2) + "°C<br>Variance: " + d.variance + "°C" )
       .style("top", ((event.pageY)-100)+"px")
       .style("left",((event.pageX)-50)+"px");
   }
